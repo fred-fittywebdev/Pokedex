@@ -4,6 +4,7 @@ import Pokemon from '../models/pokemon';
 import formatDate from '../helpers/FormatDate';
 import formatType from '../helpers/FormatType';
 import PokemonService from '../services/PokemonService';
+import Loader from '../components/Loader';
   
 type Params = { id: string };
   
@@ -67,7 +68,7 @@ const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
           </div>
         </div>
       ) : (
-        <h4 className="center">Aucun pokémon à afficher !</h4>
+        <h4 className="center"><Loader/></h4>
       )}
     </div>
   );
