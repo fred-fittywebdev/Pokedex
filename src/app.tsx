@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import PageNotFound from './pages/PageNotFound';
 import PokemonEdit from './pages/PokemonEdit';
 import PokemonAdd from './pages/PokemonAdd';
+import Loading from './pages/Login'
+import Login from './pages/Login';
+import PrivateRoute from './PrivateRoute';
   
 const App: FunctionComponent = () => {
     // hook d'état, useState('React') => Etat initial du composant
@@ -23,11 +26,12 @@ const App: FunctionComponent = () => {
           </nav>
           {/* Le système de route */}
           <Switch>
-              <Route exact path="/" component={PokemonList} />
-              <Route exact path="/pokemons" component={PokemonList} />
-              <Route exact path='/pokemons/add' component={PokemonAdd} />
-              <Route exact path="/pokemons/:id" component={PokemonsDetail} />
-              <Route exact path="/pokemons/edit/:id" component={PokemonEdit} />
+              <PrivateRoute exact path="/" component={PokemonList} />
+              <Route exact path="/login" component={Login} />
+              <PrivateRoute exact path="/pokemons" component={PokemonList} />
+              <PrivateRoute exact path='/pokemons/add' component={PokemonAdd} />
+              <PrivateRoute exact path="/pokemons/:id" component={PokemonsDetail} />
+              <PrivateRoute exact path="/pokemons/edit/:id" component={PokemonEdit} />
               <Route component={PageNotFound} />
           </Switch>
       </div>
