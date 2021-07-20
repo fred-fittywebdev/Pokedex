@@ -4,6 +4,7 @@ import PokemonsDetail from './pages/PokemonDetail';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import PageNotFound from './pages/PageNotFound';
 import PokemonEdit from './pages/PokemonEdit';
+import PokemonAdd from './pages/PokemonAdd';
   
 const App: FunctionComponent = () => {
     // hook d'état, useState('React') => Etat initial du composant
@@ -24,6 +25,7 @@ const App: FunctionComponent = () => {
           <Switch>
               <Route exact path="/" component={PokemonList} />
               <Route exact path="/pokemons" component={PokemonList} />
+              <Route exact path='/pokemons/add' component={PokemonAdd} />
               <Route exact path="/pokemons/:id" component={PokemonsDetail} />
               <Route exact path="/pokemons/edit/:id" component={PokemonEdit} />
               <Route component={PageNotFound} />

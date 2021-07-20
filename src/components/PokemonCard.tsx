@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
   
 type Props = {
   pokemon: Pokemon,
-  borderColor?: string
+  borderColor?: string,
 };
   
 const PokemonCard: FunctionComponent<Props> = ({pokemon, borderColor = '#009688'}) => {
