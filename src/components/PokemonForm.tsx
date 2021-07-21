@@ -184,7 +184,7 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon, isEditForm}) => {
               <div className="card-content">
                 {/* Pokemon picture */}
                 {isAddForm() && ( 
-                  <div data-tip="Remplacer: xxx par le numéro du pokemon." className="form-group">
+                  <div  data-tip="Remplacer: xxx par le numéro du pokemon." className="form-group">
                   <ReactTooltip place="top" type="error" effect="float"/>
                   <label htmlFor="name">Image</label>
                   <input id="picture" name="picture" type="text" className="form-control" value={form.picture.value} onChange={e => handleInputChange(e)}></input>
