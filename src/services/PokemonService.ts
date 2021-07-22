@@ -5,14 +5,14 @@ export default class PokemonService {
  
   // récuperer un pokemon
   static getPokemons(): Promise<Pokemon[]> {
-    return fetch('http://tscript-pokedex.netlify.app/pokemons')
+    return fetch('http://localhost:3001/pokemons')
       .then(response => response.json())
       .catch(error => this.handleError(error))
   }
  
   // Editer un pokemon
   static getPokemon(id: number): Promise<Pokemon|null> {
-    return fetch(`http://tscript-pokedex.netlify.app/pokemons/${id}`)
+    return fetch(`http://localhost:3001/pokemons/${id}`)
       .then(response => response.json())
       .then(data => this.isEmpty(data) ? null : data)
       .catch(error => this.handleError(error))
@@ -20,7 +20,7 @@ export default class PokemonService {
 
   // Mofidier un pokemon
   static updatePokemon(pokemon: Pokemon): Promise<Pokemon> {
-    return fetch(`http://tscript-pokedex.netlify.app/pokemons/${pokemon.id}`, {
+    return fetch(`http://localhost:3001/pokemons/${pokemon.id}`, {
       method: 'PUT',
       body: JSON.stringify(pokemon),
       headers: { 'Content-Type': 'application/json' }
@@ -34,7 +34,7 @@ export default class PokemonService {
     delete pokemon.created
     
 
-    return fetch('http://tscript-pokedex.netlify.app/pokemons', {
+    return fetch('http://localhost:3001/pokemons', {
       method: 'POST',
       body: JSON.stringify(pokemon),
       headers: { 'Content-Type': 'application/json' }
@@ -45,7 +45,7 @@ export default class PokemonService {
 
   // Supprimer un pokemon
   static deletePokemon(pokemon: Pokemon): Promise<Pokemon> {
-    return fetch(`http://tscript-pokedex.netlify.app/${pokemon.id}`, {
+    return fetch(`http://localhost:3001/pokemons/${pokemon.id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -54,7 +54,7 @@ export default class PokemonService {
   }
 
   static searchPokemon(term: string): Promise<Pokemon[]> {
-    return fetch(`http://tscript-pokedex.netlify.app/pokemons?q=${term}`)
+    return fetch(`http://localhost:3001/pokemons?q=${term}`)
     .then(response => response.json())
     .catch(error => this.handleError(error))
   }
